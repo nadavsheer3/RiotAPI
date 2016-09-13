@@ -16,7 +16,7 @@ if($_REQUEST){
 			$summoner = rawurlencode(strtolower($_GET['summoner_name']));
 			$server = $_GET['server'];
 			
-			$riotAPI = new R iotAPI($summoner, $server);
+			$riotAPI = new RiotAPI($summoner, $server);
 			//$stuff = $riotAPI->summonerByName();
 			$riotAPI->view($riotAPI->callback, 1);
 			//$init = $riotAPI->getSummonerId($summoner, $server);
