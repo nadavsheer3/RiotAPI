@@ -5,14 +5,15 @@
 * Basic summoner information
 **/
 namespace RiotAPI\Summoner;
+require __DIR__.'\..\RiotApiController.php';
 
 class Summoner extends RiotApiController{
 	
 	// Get summoner objects mapped by standardized summoner name for a given list of summoner names
 	// Comma-separated list of summoner names or standardized summoner names associated with summoners to retrieve. Maximum allowed at once is 40
-	static public function summonerByName($summoner, $server){
+	static public function summonerByName($summoner, $server, $api_key){
 		
-		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/by-name/'.$summoner.'?api_key='.$this->API_KEY;
+		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/by-name/'.$summoner.'?api_key='.$api_key;
 		$request = $this->apiFetch($url);
 
 		$summoner_name = str_replace(' ', '', rawurldecode($summoner));
@@ -25,9 +26,9 @@ class Summoner extends RiotApiController{
 
 	// Get summoner objects mapped by summoner ID for a given list of summoner IDs
 	// Comma-separated list of summoner IDs associated with summoners to retrieve. Maximum allowed at once is 40
-	static public function summonersById($summoners, $server){
+	static public function summonersById($summoners, $server, $api_key){
 		
-		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/'.$summoners.'?api_key='.$this->API_KEY;
+		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/'.$summoners.'?api_key='.$api_key;
 		$request = $this->apiFetch($url);
 
 		$this->callback['summonersById'] = $request;
@@ -35,9 +36,9 @@ class Summoner extends RiotApiController{
 
 	// Get mastery pages mapped by summoner ID for a given list of summoner IDs
 	// Comma-separated list of summoner IDs associated with summoners to retrieve. Maximum allowed at once is 40
-	static public function masteriesById($id, $server){
+	static public function masteriesById($id, $server, $api_key){
 		
-		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/masteries/'.$id.'?api_key='.$this->API_KEY;
+		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/masteries/'.$id.'?api_key='.$api_key;
 		$request = $this->apiFetch($url);
 
 		$this->callback['summonerMasteries'] = $request;
@@ -45,9 +46,9 @@ class Summoner extends RiotApiController{
 
 	// Get summoner names mapped by summoner ID for a given list of summoner IDs
 	// Comma-separated list of summoner IDs associated with summoner names to retrieve. Maximum allowed at once is 40
-	static public function summonerNameById($id, $server){
+	static public function summonerNameById($id, $server, $api_key){
 		
-		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/name/'.$id.'?api_key='.$this->API_KEY;
+		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/name/'.$id.'?api_key='.$api_key;
 		$request = $this->apiFetch($url);
 
 		$this->callback['summonerName'] = $request;
@@ -55,9 +56,9 @@ class Summoner extends RiotApiController{
 	
 	// Get rune pages mapped by summoner ID for a given list of summoner IDs
 	// Comma-separated list of summoner IDs associated with summoners to retrieve. Maximum allowed at once is 40
-	static public function runesById($id, $server){
+	static public function runesById($id, $server, $api_key){
 		
-		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/runes/'.$id.'?api_key='.$this->API_KEY;
+		$url ='https://'.$server.'.api.pvp.net/api/lol/'.$server.'/v1.4/summoner/runes/'.$id.'?api_key='.$api_key;
 		$request = $this->apiFetch($url);
 
 		$this->callback['summonerRunes'] = $request;

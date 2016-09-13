@@ -1,9 +1,9 @@
 <?php 
 
 include 'app.php';
-use RiotAPI as RiotAPI;
-use RiotAPI\Summoner as Summoner;
-use RiotAPI\Stats as Stats;
+use \RiotAPI\RiotApiController as RiotAPI;
+use \RiotAPI\Summoner as Summoner;
+use \RiotAPI\Stats as Stats;
 
 $error = '';
 
